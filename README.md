@@ -180,3 +180,38 @@ you will see something like this on your upm branch:
 ```
 
 Feel free to adjust commit message and release name as you wish, it should not break pipeline. Also, this pipeline depends on my other repository [upm-preparator](https://github.com/Ujinjinjin/upm-preparator) that helps to generate `*.meta` files, change project structure and update version. Feel free to fork both repos and play around with them, through I would recommend to keep `upm-preparator` as it currently is, unless it highly needed.
+
+All guids for `*.meta` files are generated based on path to file or directory, so unless you rename specific file/dir it's guid will remain unchanged.
+
+## 4. Pipeline versions
+
+There are currently two ways to obtain `upm` branch:
+
+1. Recreate branch on every release
+2. Reuse branch on every release
+
+### 4.1. Recreation
+
+In order to recreate `upm` branch, you have to refer to pipeline definition on commit [0a89b1f](https://github.com/Ujinjinjin/art-in-fart-package/commit/0a89b1f0c83a1808c6ae866f682af89b429703a3). Do not just copy and paste old version of pipeline definition, some minor changes should be made. This way your repository will look like:
+
+Benefits of this way are:
+
+1. You use UPM branch as temporary, so you will not drag on all changes form `target` branch also on `upm` branch
+2. Using tags and releases people are able to download specific version of pachage
+
+Disadvantages are:
+
+1. If someone wants to add specific version of package to unity from git repo, he will most probably fail, but it is not tested yet
+
+### 4.2. Reusing
+
+In order to reuse `upm` branch jsut refer to pipeline definition from this tutorial. This way your repository will look like:
+
+Benefits of this way are:
+
+1. People can add specific version of your package to unity using git url
+
+
+Disadvantages are:
+
+1. Your repo tree will contain and track all changes made to project on both `target` and `upm` branches
