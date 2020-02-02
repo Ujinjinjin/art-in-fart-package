@@ -58,6 +58,7 @@ jobs:
       run: |
         echo ${PKG_VERSION}
         echo "${PKG_VERSION}"
+        dir
 
     - name: commit, tag and push changes
       run: |
