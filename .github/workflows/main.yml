@@ -39,6 +39,15 @@ jobs:
       run: |
         python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" "temp/${PKG_JSON}"
         rm "temp/${VERSION_JSON}"
+    
+    - name: print info
+      run: |
+        echo ${PKG_VERSION}
+        echo "${PKG_VERSION}"
+        dir
+        cat package.json
+        echo ""
+        cat temp/package.json
 
     - name: change project structure
       run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
@@ -53,13 +62,6 @@ jobs:
       run: |
         git config --global user.email "ujinjinjin@outlook.com"
         git config --global user.name "Camille Galladjov"
-
-    - name: print info
-      run: |
-        echo ${PKG_VERSION}
-        echo "${PKG_VERSION}"
-        dir
-        cat package.json
 
     - name: commit, tag and push changes
       run: |
