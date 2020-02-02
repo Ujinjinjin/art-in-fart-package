@@ -149,3 +149,34 @@ Path to previously created `package.json` in your target branch
 ### 2.6. git user info
 
 In order to let you commit from machine that running this pipeline you have to specify email and name that git will use.
+
+## 3. Result
+
+If everything configured as it should be, considering, you have following package repository structure:
+
+```
+.
+├── ArtInFart
+│   ├── ArtInFart.asmdef
+│   ├── ArtInFart.csproj
+│   └── Worker.cs
+├── package.json
+├── README.md
+└── version.json
+```
+
+you will see something like this on your upm branch:
+
+```
+.
+├── ArtInFart.asmdef
+├── ArtInFart.asmdef.meta
+├── ArtInFart.csproj
+├── ArtInFart.csproj.meta
+├── package.json
+├── package.json.meta
+├── Worker.cs
+└── Worker.cs.meta
+```
+
+Feel free to adjust commit message and release name as you wish, it should not break pipeline. Also, this pipeline depends on my other repository [upm-preparator](https://github.com/Ujinjinjin/upm-preparator) that helps to generate `*.meta` files, change project structure and update version. Feel free to fork both repos and play around with them, through I would recommend to keep `upm-preparator` as it currently is, unless it highly needed.
