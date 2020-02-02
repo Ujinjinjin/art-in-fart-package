@@ -10,19 +10,18 @@ on:
 
 jobs:
   build:
+    env:
+      PKG_ROOT: ArtInFart
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: delete upm branch from origin
-      run: git push origin --delete upm
-
-    - name: create and checkout upm branch
+    - name: copy package to temp
       run: |
-        git checkout -b upm
-        git push --set-upstream origin upm
+        mkdir temp
+        cp -r $PKG_ROOT temp
 
     - name: get preparation tools
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
@@ -34,11 +33,15 @@ jobs:
       env:
         VERSION_JSON: version.json
         PKG_JSON: package.json
+    
+    - name: checkout upm branch
+    run: git checkout upm
+
+    - name: show dir structure
+      run: dir
 
     - name: change project structure
       run: python3 upm-preparator/structure_changinator.py $PKG_ROOT
-      env:
-        PKG_ROOT: ArtInFart
 
     - name: generate meta files
       run: python3 upm-preparator/meta_makinator.py
