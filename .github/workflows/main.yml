@@ -18,24 +18,29 @@ jobs:
       
     - name: get preparation tools
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+
     - name: generate meta files
       run: python3 upm-preparator/meta_generator.py
+
     - name: delete upm branch from origin
       run: git push origin --delete upm
-    - name: split upm branch
+
+    - name: create and checkout upm branch
+      run: git checkout -b upm
+
+    - name: change project structure
       run: |
-        git subtree split -P "$PKG_ROOT" -b upm
-        git push -u origin upm
+        rm -rf !("$PKG_ROOT"|".git"|"package.json")
+        cp -r "$PKG_ROOT/*" .
+        rm "$PKG_ROOT"
       env:
         PKG_ROOT: ArtInFart
-    - name: checkout origin/upm
-      run: git checkout origin/upm
-    - name: remove preparation tools
-      run: rm -r upm-preparator
+
     - name: config git data
       run: |
         git config --global user.email "ujinjinjin@outlook.com"
         git config --global user.name "Camille Galladjov"
+
     - name: commit and push changes
       run: |
         git add -A
