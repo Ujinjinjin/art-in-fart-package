@@ -14,12 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      
+    - name: get preparation tools
+    run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+
+    - name: generate .meta files
+    run: python3 upm-preparator/meta_generator.py
+
     - name: split upm branch
       run: |
         git subtree split -P "$PKG_ROOT" -b upm
