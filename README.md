@@ -194,6 +194,8 @@ There are currently two ways to obtain `upm` branch:
 
 In order to recreate `upm` branch, you have to refer to pipeline definition on commit [0a89b1f](https://github.com/Ujinjinjin/art-in-fart-package/commit/0a89b1f0c83a1808c6ae866f682af89b429703a3). Do not just copy and paste old version of pipeline definition, some minor changes should be made. This way your repository will look like:
 
+![](https://cdn.discordapp.com/attachments/459727475287654401/673588993727791153/unknown.png)
+
 Benefits of this way are:
 
 1. You use UPM branch as temporary, so you will not drag on all changes form `target` branch also on `upm` branch
@@ -206,6 +208,8 @@ Disadvantages are:
 ### 4.2. Reusing
 
 In order to reuse `upm` branch jsut refer to pipeline definition from this tutorial. This way your repository will look like:
+
+![](https://cdn.discordapp.com/attachments/459727475287654401/673650465950400512/unknown.png)
 
 Benefits of this way are:
 
