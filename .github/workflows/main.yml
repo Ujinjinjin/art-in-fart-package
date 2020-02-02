@@ -41,7 +41,7 @@ jobs:
         rm "temp/${VERSION_JSON}"
 
     - name: change project structure
-      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
+      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}" "temp/${PKG_JSON}"
 
     - name: generate meta files
       run: python3 upm-preparator/meta_makinator.py
