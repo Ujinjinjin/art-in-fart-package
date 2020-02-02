@@ -39,15 +39,6 @@ jobs:
       run: |
         python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" "temp/${PKG_JSON}"
         rm "temp/${VERSION_JSON}"
-    
-    - name: print info
-      run: |
-        echo ${PKG_VERSION}
-        echo "${PKG_VERSION}"
-        dir
-        cat package.json
-        echo ""
-        cat temp/package.json
 
     - name: change project structure
       run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
