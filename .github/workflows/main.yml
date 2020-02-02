@@ -59,9 +59,10 @@ jobs:
     - name: commit, tag and push changes
       run: |
         git add -A
-        git tag $(echo $PCKG_VERSION)
         git commit -m "new version of UPM package"
         git push origin upm
+        git tag $(echo $PCKG_VERSION)
+        git push origin $(echo $PCKG_VERSION)
 
     - name: create release
       id: create_release
