@@ -36,7 +36,7 @@ jobs:
 
     - name: bump package version
       run: |
-        python3 upm-preparator/version_bumpinator.py $VERSION_JSON $PKG_JSON
+        python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" $PKG_JSON
         rm "temp/${VERSION_JSON}"
 
     - name: show dir structure
