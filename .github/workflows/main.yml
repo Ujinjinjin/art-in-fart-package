@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - "version.json"
+      - ".github/workflows/main.yml"
 
 jobs:
   build:
@@ -19,9 +20,8 @@ jobs:
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
     - name: generate meta files
       run: python3 upm-preparator/meta_generator.py
-    - name: delete upm branch
+    - name: delete upm branch from origin
       run: |
-        git branch -d upm
         git push origin --delete upm
     - name: split upm branch
       run: |
