@@ -16,11 +16,9 @@ jobs:
     - uses: actions/checkout@v2
       
     - name: get preparation tools
-    run: git clone https://github.com/Ujinjinjin/upm-preparator.git
-
-    - name: generate .meta files
-    run: python3 upm-preparator/meta_generator.py
-
+      run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+    - name: generate meta files
+      run: python3 upm-preparator/meta_generator.py
     - name: split upm branch
       run: |
         git subtree split -P "$PKG_ROOT" -b upm
