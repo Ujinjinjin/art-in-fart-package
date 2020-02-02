@@ -59,7 +59,7 @@ jobs:
     - name: commit, tag and push changes
       run: |
         git add -A
-        git commit -m "UPM package v${PCKG_VERSION}"
+        git commit -m "UPM package version ${PCKG_VERSION}"
         git push origin upm
         git tag $(echo $PCKG_VERSION)
         git push origin $(echo $PCKG_VERSION)
