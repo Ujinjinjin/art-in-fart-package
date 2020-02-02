@@ -69,7 +69,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: $(echo $PCKG_VERSION)
+        tag_name: $PCKG_VERSION
         release_name: "Release $(echo $PCKG_VERSION) UPM"
         body: "-"
         draft: false
