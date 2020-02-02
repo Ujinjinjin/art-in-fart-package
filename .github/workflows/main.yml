@@ -28,7 +28,7 @@ jobs:
     - name: create and checkout upm branch
       run: |
         git checkout -b upm
-        git push origin/upm
+        git push --set-upstream origin upm
 
     - name: change project structure
       run: |
