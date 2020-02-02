@@ -22,6 +22,9 @@ jobs:
       run: |
         mkdir temp
         cp -r $PKG_ROOT temp
+    
+    - name: fetch all branches
+      run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
 
     - name: checkout upm branch
       run: |
