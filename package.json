@@ -1,0 +1,13 @@
+{
+    "displayName": "Art in Fart",
+    "category": "Experiments",
+    "description": "This is some test package to play around with github actions",
+    "dependencies": {},
+    "keywords": [
+        "fart"
+    ],
+    "name": "com.fart.is.art",
+    "unity": "2019.3",
+    "version": "0.0.20",
+    "type": "framework"
+}
