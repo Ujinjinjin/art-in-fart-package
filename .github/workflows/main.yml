@@ -51,8 +51,21 @@ jobs:
         git config --global user.email "ujinjinjin@outlook.com"
         git config --global user.name "Camille Galladjov"
 
-    - name: commit and push changes
+    - name: commit, tag and push changes
       run: |
         git add -A
+        git tag $PCKG_VERSION
         git commit -m "new version of UPM package"
         git push origin upm
+
+    - name: create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: $PCKG_VERSION
+        release_name: Release $PCKG_VERSION UPM
+        body: -
+        draft: false
+        prerelease: false
