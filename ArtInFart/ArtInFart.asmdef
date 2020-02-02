@@ -1,8 +1,6 @@
 {
     "name": "ArtInFart",
-    "references": [
-        "Svelto.Common"
-    ],
+    "references": [],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],

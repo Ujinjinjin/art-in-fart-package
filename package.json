@@ -2,9 +2,7 @@
     "displayName": "Art in Fart",
     "category": "Experiments",
     "description": "This is some test package to play around with github actions",
-    "dependencies": {
-      "com.sebaslab.svelto.common": "2.9.7"
-    },
+    "dependencies": {},
     "keywords": [
       "fart"
     ],
