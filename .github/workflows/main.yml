@@ -19,9 +19,15 @@ jobs:
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
     - name: generate meta files
       run: python3 upm-preparator/meta_generator.py
+    - name: delete upm branch
+      run: |
+        git branch -d upm
+        git push origin --delete upm
     - name: split upm branch
       run: |
         git subtree split -P "$PKG_ROOT" -b upm
         git push -u origin upm
       env:
         PKG_ROOT: ArtInFart
+    - name: list files
+      run: dir
