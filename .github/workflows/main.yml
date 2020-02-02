@@ -15,12 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
-    - name: get preparation tools
-      run: git clone https://github.com/Ujinjinjin/upm-preparator.git
-
-    - name: generate meta files
-      run: python3 upm-preparator/meta_generator.py
 
     - name: delete upm branch from origin
       run: git push origin --delete upm
@@ -30,11 +24,14 @@ jobs:
         git checkout -b upm
         git push --set-upstream origin upm
 
+    - name: get preparation tools
+      run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+
+    - name: generate meta files
+      run: python3 upm-preparator/meta_generator.py
+
     - name: change project structure
-      run: |
-        rm -rf !("$PKG_ROOT"|".git"|"package.json")
-        cp -r "$PKG_ROOT/*" .
-        rm "$PKG_ROOT"
+      run: python3 upm-preparator/structure_changer.py $PKG_ROOT
       env:
         PKG_ROOT: ArtInFart
 
