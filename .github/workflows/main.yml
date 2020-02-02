@@ -35,7 +35,9 @@ jobs:
         PKG_JSON: package.json
     
     - name: checkout upm branch
-      run: git checkout upm
+      run: |
+        git branch --list
+        git checkout upm
 
     - name: show dir structure
       run: dir
