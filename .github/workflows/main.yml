@@ -47,4 +47,4 @@ jobs:
       run: |
         git add -A
         git commit -m "new version of UPM package"
-        git push origin/upm
+        git push upm
