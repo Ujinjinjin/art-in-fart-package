@@ -66,6 +66,6 @@ jobs:
       with:
         tag_name: $PCKG_VERSION
         release_name: Release $PCKG_VERSION UPM
-        body: -
+        body: "-"
         draft: false
         prerelease: false
