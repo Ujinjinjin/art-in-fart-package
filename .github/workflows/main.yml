@@ -59,7 +59,7 @@ jobs:
     - name: commit, tag and push changes
       run: |
         git add -A
-        git tag ${PCKG_VERSION}
+        git tag $(echo $PCKG_VERSION)
         git commit -m "new version of UPM package"
         git push origin upm
 
@@ -69,8 +69,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${PCKG_VERSION}
-        release_name: "Release ${PCKG_VERSION} UPM"
+        tag_name: $(echo $PCKG_VERSION)
+        release_name: "Release $(echo $PCKG_VERSION) UPM"
         body: "-"
         draft: false
         prerelease: false
