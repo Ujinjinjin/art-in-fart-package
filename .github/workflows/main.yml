@@ -24,7 +24,9 @@ jobs:
         cp -r $PKG_ROOT temp
 
     - name: get preparation tools
-      run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+      run: |
+        git clone https://github.com/Ujinjinjin/upm-preparator.git
+        rm -r upm-preparator/.git
 
     - name: bump package version
       run: |
@@ -37,7 +39,7 @@ jobs:
     - name: checkout upm branch
       run: |
         git branch --list
-        git checkout origin upm
+        git checkout upm
 
     - name: show dir structure
       run: dir
