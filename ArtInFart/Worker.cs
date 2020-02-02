@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ArtInFart
+﻿namespace ArtInFart
 {
     public class Worker
     {
