@@ -54,6 +54,7 @@ jobs:
     - name: commit, tag and push changes
       run: |
         git add -A
+        echo "${PCKG_VERSION}"
         git tag $PCKG_VERSION
         git commit -m "new version of UPM package"
         git push origin upm
