@@ -35,6 +35,9 @@ jobs:
       env:
         PKG_ROOT: ArtInFart
 
+    - name: remove preparation tools
+      run: rm -rf upm-preparator
+
     - name: config git data
       run: |
         git config --global user.email "ujinjinjin@outlook.com"
