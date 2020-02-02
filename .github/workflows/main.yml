@@ -22,14 +22,6 @@ jobs:
       run: |
         mkdir temp
         cp -r $PKG_ROOT temp
-    
-    - name: fetch all branches
-      run: git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-
-    - name: checkout upm branch
-      run: |
-        git branch --list
-        git checkout upm
 
     - name: get preparation tools
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
@@ -41,6 +33,11 @@ jobs:
       env:
         VERSION_JSON: version.json
         PKG_JSON: package.json
+
+    - name: checkout upm branch
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git checkout upm
 
     - name: show dir structure
       run: dir
