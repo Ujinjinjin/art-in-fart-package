@@ -39,9 +39,6 @@ jobs:
         python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" $PKG_JSON
         rm "temp/${VERSION_JSON}"
 
-    - name: show dir structure
-      run: dir
-
     - name: change project structure
       run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
 
