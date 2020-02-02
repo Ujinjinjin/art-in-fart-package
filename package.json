@@ -1,5 +1,5 @@
 {
-    "displayName": "Art in Fart",
+    "displayName": "ArtinFart",
     "category": "Experiments",
     "description": "This is some test package to play around with github actions",
     "dependencies": {
@@ -8,8 +8,8 @@
     "keywords": [
       "fart"
     ],
-    "name": "com.sebaslab.svelto.ecs",
-    "unity": "2019.2",
+    "name": "com.fart.is.art",
+    "unity": "2019.3",
     "version": "2.9.7",
     "type": "framework"
   } 
