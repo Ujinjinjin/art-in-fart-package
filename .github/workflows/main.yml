@@ -51,6 +51,11 @@ jobs:
         git config --global user.email "ujinjinjin@outlook.com"
         git config --global user.name "Camille Galladjov"
 
+    - name: print info
+      run: |
+        echo ${PCKG_VERSION}
+        echo "${PCKG_VERSION}"
+
     - name: commit, tag and push changes
       run: |
         git add -A
