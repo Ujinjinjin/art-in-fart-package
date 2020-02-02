@@ -37,7 +37,7 @@ jobs:
     - name: checkout upm branch
       run: |
         git branch --list
-        git checkout upm
+        git checkout origin upm
 
     - name: show dir structure
       run: dir
