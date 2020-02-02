@@ -59,6 +59,7 @@ jobs:
         echo ${PKG_VERSION}
         echo "${PKG_VERSION}"
         dir
+        cat package.json
 
     - name: commit, tag and push changes
       run: |
