@@ -12,6 +12,8 @@ jobs:
   build:
     env:
       PKG_ROOT: ArtInFart
+      VERSION_JSON: version.json
+      PKG_JSON: package.json
 
     runs-on: ubuntu-latest
 
@@ -22,6 +24,12 @@ jobs:
       run: |
         mkdir temp
         cp -r $PKG_ROOT temp
+        cp $VERSION_JSON temp
+
+    - name: checkout upm branch
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git checkout upm
 
     - name: get preparation tools
       run: git clone https://github.com/Ujinjinjin/upm-preparator.git
@@ -29,15 +37,7 @@ jobs:
     - name: bump package version
       run: |
         python3 upm-preparator/version_bumpinator.py $VERSION_JSON $PKG_JSON
-        rm $VERSION_JSON
-      env:
-        VERSION_JSON: version.json
-        PKG_JSON: package.json
-
-    - name: checkout upm branch
-      run: |
-        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        git checkout upm
+        rm "temp/${VERSION_JSON}"
 
     - name: show dir structure
       run: dir
