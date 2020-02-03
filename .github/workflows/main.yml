@@ -5,15 +5,16 @@ on:
     branches:
       - master
     paths:
-      - "version.json"
+      - "ArtInFart/version.json"
       - ".github/workflows/main.yml"
 
 jobs:
   build:
     env:
       PKG_ROOT: ArtInFart
-      VERSION_JSON: version.json
-      PKG_JSON: package.json
+      VERSION_JSON: ArtInFart/version.json
+      PKG_JSON: ArtInFart/package.json
+      LICENCE: LICENCE
 
     runs-on: ubuntu-latest
 
@@ -26,6 +27,7 @@ jobs:
         cp -r $PKG_ROOT temp
         cp $VERSION_JSON temp
         cp $PKG_JSON temp
+        cp $LICENCE temp
 
     - name: checkout upm branch
       run: |
@@ -46,8 +48,14 @@ jobs:
     - name: generate meta files
       run: python3 upm-preparator/meta_makinator.py
 
-    - name: remove preparation tools
-      run: rm -rf upm-preparator
+    - name: move package.json & LICENCE from temp to root
+      run: |
+        echo hello
+
+    - name: remove preparation tools and temp
+      run: |
+        rm -rf upm-preparator
+        rm -rf temp
 
     - name: config git data
       run: |
