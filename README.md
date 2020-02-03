@@ -47,7 +47,7 @@ You'll also need package.josn in order to store there information about your pac
 Create new github action, copy and paste following instruction placing your values on commented sections. More on that down below
 
 ```yml
-name: CI
+name: Pipeline name
 
 on:
   push:
@@ -63,6 +63,7 @@ jobs:
       PKG_ROOT: # 3. path to your package root in target branch
       VERSION_JSON: # 4. path to version.json in target branch
       PKG_JSON: # 5. path to package.json in target branch
+      LICENSE: LICENSE
 
     runs-on: ubuntu-latest
 
@@ -75,6 +76,7 @@ jobs:
         cp -r $PKG_ROOT temp
         cp $VERSION_JSON temp
         cp $PKG_JSON temp
+        cp $LICENSE temp
 
     - name: checkout upm branch
       run: |
@@ -86,17 +88,24 @@ jobs:
 
     - name: bump package version
       run: |
-        python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" "temp/${PKG_JSON}"
-        rm "temp/${VERSION_JSON}"
+        python3 upm-preparator/version_bumpinator.py "temp/version.json" "temp/package.json"
+        rm "temp/version.json"
 
     - name: change project structure
-      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}" "temp/${PKG_JSON}"
+      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
+
+    - name: move package.json & LICENSE from temp to root
+      run: |
+        mv "temp/package.json" .
+        mv "temp/LICENSE" .
 
     - name: generate meta files
       run: python3 upm-preparator/meta_makinator.py
 
-    - name: remove preparation tools
-      run: rm -rf upm-preparator
+    - name: remove preparation tools and temp
+      run: |
+        rm -rf upm-preparator
+        rm -rf temp
 
     # 6. replace 'test@email.com' and 'GitHub Actions' with email and name you wish to be shown on your git tree
     - name: config git data
