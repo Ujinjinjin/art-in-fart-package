@@ -47,7 +47,7 @@ jobs:
       run: python3 upm-preparator/meta_makinator.py
 
     - name: move package.json from temp to root
-      run: cp "temp/package.json" .
+      run: mv "temp/package.json" .
 
     - name: remove preparation tools and temp
       run: |
