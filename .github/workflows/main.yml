@@ -14,6 +14,7 @@ jobs:
       PKG_ROOT: ArtInFart
       VERSION_JSON: ArtInFart/version.json
       PKG_JSON: ArtInFart/package.json
+      LICENSE: LICENSE
 
     runs-on: ubuntu-latest
 
@@ -26,6 +27,7 @@ jobs:
         cp -r $PKG_ROOT temp
         cp $VERSION_JSON temp
         cp $PKG_JSON temp
+        cp $LICENSE temp
 
     - name: checkout upm branch
       run: |
