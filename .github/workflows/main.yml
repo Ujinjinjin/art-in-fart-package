@@ -1,4 +1,4 @@
-name: CI
+name: Release
 
 on:
   push:
@@ -37,18 +37,17 @@ jobs:
 
     - name: bump package version
       run: |
-        python3 upm-preparator/version_bumpinator.py "temp/${VERSION_JSON}" "temp/${PKG_JSON}"
-        rm "temp/${VERSION_JSON}"
+        python3 upm-preparator/version_bumpinator.py "temp/version.json" "temp/package.json"
+        rm "temp/version.json"
 
     - name: change project structure
-      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}" "temp/${PKG_JSON}"
+      run: python3 upm-preparator/structure_changinator.py "temp/${PKG_ROOT}"
 
     - name: generate meta files
       run: python3 upm-preparator/meta_makinator.py
 
     - name: move package.json from temp to root
-      run: |
-        echo hello
+      run: cp "temp/package.json" .
 
     - name: remove preparation tools and temp
       run: |
