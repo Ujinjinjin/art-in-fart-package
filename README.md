@@ -84,7 +84,7 @@ jobs:
         git checkout upm
 
     - name: get preparation tools
-      run: git clone https://github.com/Ujinjinjin/upm-preparator.git
+      run: git clone https://github.com/Ujinjinjin/upm-preparator.git --branch v1.0 --single-branch
 
     - name: bump package version
       run: |
